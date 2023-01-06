@@ -14,7 +14,7 @@ namespace project11.Utilities
     {
         public static IWebDriver driver;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void LoginSteps()
         {
             driver = new ChromeDriver();
@@ -22,7 +22,7 @@ namespace project11.Utilities
             Loginpage loginpageobj = new Loginpage();
             loginpageobj.LoginActions(driver);
         }
-        [TearDown]
+        [OneTimeTearDown]
         public void CloseTestRun()
         {
             driver.Quit();
@@ -30,8 +30,9 @@ namespace project11.Utilities
         }
 
     }
-    
 
-
+    internal class OneTimeAttribute : Attribute
+    {
     }
+}
 
